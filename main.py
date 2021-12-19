@@ -235,7 +235,33 @@ def fire(display, t):
     display.circle(RADIUS, RADIUS, int(RADIUS * 1 / 3 * scale))
 
 
-possible_modes = ["rainbow", "color_cycle", "fire", "white", "warm_white", "cold_white"]
+def get_mode_name(mode):
+    if mode == "white":
+        return "white"
+    elif mode == "warm_white":
+        return "warm-white"
+    elif mode == "cold_white":
+        return "cold-white"
+    elif mode == "color_cycle":
+        return "color-cycle"
+    elif mode == "rainbow":
+        return "rainbow"
+    elif mode == "fire":
+        return "fire"
+    else:
+        return "ERROR"
+
+
+# --- mode magic ---
+
+possible_modes = [
+    "rainbow",
+    "color_cycle",
+    # "fire", TODO: implement the fire animation for the LEDs
+    "white",
+    "warm_white",
+    "cold_white"
+]
 
 
 def increase_mode(current_mode):
@@ -341,7 +367,8 @@ while True:
     # x - = left
     # y + = down
     # y - = up
-    display.text(f"{current_mode}", int(width * 3 / 8), int(height / 3), 0)
+
+    display.text(f"{get_mode_name(current_mode)}", int(width * 3 / 8), int(height / 3), 0)
     display.text(f"{int(poti_value * 100)}%", RADIUS, int(height * 2 / 3), 0)
     display.update()
     display.update()
@@ -357,7 +384,7 @@ while True:
         for led_index in range(NUM_LEDS):
             color_code = led_rainbow_codes[increase_color_index(led_index, led_step, NUM_LEDS)]
             led_strip.set_pixel(led_index, (
-            int(color_code[0] * poti_value), int(color_code[1] * poti_value), int(color_code[2] * poti_value)))
+                int(color_code[0] * poti_value), int(color_code[1] * poti_value), int(color_code[2] * poti_value)))
 
         led_strip.show()
     else:
