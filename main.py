@@ -1,5 +1,4 @@
 import time
-import math
 from pimoroni_i2c import PimoroniI2C
 from breakout_potentiometer import BreakoutPotentiometer
 from breakout_trackball import BreakoutTrackball
