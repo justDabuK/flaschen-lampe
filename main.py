@@ -126,9 +126,7 @@ def cold_white(display):
     display.circle(RADIUS, RADIUS, RADIUS)
 
 
-def color_cycle(display, t):
-    hue = t % 1.0
-    r, g, b = [int(c * 255) for c in hsv_to_rgb(hue, 1.0, 1.0)]
+def color_cycle(display, r, g, b):
     display.set_pen(r, g, b)
     display.circle(RADIUS, RADIUS, RADIUS)
 
@@ -256,7 +254,7 @@ def decrease_mode(current_mode):
     return possible_modes[new_index]
 
 
-current_mode = possible_modes[0]
+current_mode = possible_modes[1]
 color_cycle_value = 0
 while True:
     # --- POTENTIOMETER ----
@@ -328,7 +326,7 @@ while True:
     elif current_mode == "cold_white":
         cold_white(display)
     elif current_mode == "color_cycle":
-        color_cycle(display, t)
+        color_cycle(display, red, green, blue)
     elif current_mode == "rainbow":
         rainbow_circles(display, t)
     elif current_mode == "fire":
