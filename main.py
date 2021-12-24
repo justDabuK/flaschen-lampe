@@ -5,7 +5,8 @@ from breakout_trackball import BreakoutTrackball
 from breakout_roundlcd import BreakoutRoundLCD
 from breakout_colourlcd240x240 import BreakoutColourLCD240x240
 
-from lcd_utility import round_width, round_height, set_display_color, set_display_message, square_width, square_height
+from lcd_utility import set_display_color, set_display_message, square_width, square_height, round_height, \
+    round_width, SQUARE, LCD_MODE
 from led_strip_utility import NUM_LEDS, set_strip_color, get_led_rainbow_codes
 from neopixel import Neopixel
 from poti_utility import get_color_codes
@@ -31,8 +32,14 @@ led_rainbow_codes = get_led_rainbow_codes(led_strip)
 led_step = 0
 
 # --- Round LCD ---
-display_buffer = bytearray(square_width * square_height * 2)  # 2-bytes per pixel (RGB565)
-display = BreakoutColourLCD240x240(display_buffer)
+display = None
+
+if LCD_MODE == SQUARE:
+    display_buffer = bytearray(square_width * square_height * 2)  # 2-bytes per pixel (RGB565)
+    display = BreakoutColourLCD240x240(display_buffer)
+else:
+    display_buffer = bytearray(round_width * round_height * 2)  # 2-bytes per pixel (RGB565)
+    display = BreakoutRoundLCD(display_buffer)
 
 display.set_backlight(1.0)
 
