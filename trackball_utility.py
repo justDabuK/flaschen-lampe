@@ -12,9 +12,7 @@ def set_tb_color(trackball, current_mode, red, green, blue):
         trackball.set_rgbw(255, 0, 0, 0)
     elif current_mode == "cold_white":
         trackball.set_rgbw(0, 0, 255, 0)
-    elif current_mode == "color_cycle" or current_mode == "rainbow":
-        trackball.set_rgbw(red, green, blue, 0)
-    elif current_mode == "fire":
+    elif current_mode in ["color_cycle", "rainbow", "fire", "red", "blue", "green", "magenta", "cyan", "yellow"]:
         trackball.set_rgbw(red, green, blue, 0)
     else:
         trackball.set_rgbw(0, 0, 0, 255)

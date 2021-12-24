@@ -11,6 +11,18 @@ def get_mode_name(mode):
         return "rainbow"
     elif mode == "fire":
         return "fire"
+    elif mode == "red":
+        return "red"
+    elif mode == "blue":
+        return "blue"
+    elif mode == "green":
+        return "green"
+    elif mode == "magenta":
+        return "magenta"
+    elif mode == "cyan":
+        return "cyan"
+    elif mode == "yellow":
+        return "yellow"
     else:
         return "ERROR"
 
@@ -23,7 +35,13 @@ possible_modes = [
     # "fire", TODO: implement the fire animation for the LEDs
     "white",
     "warm_white",
-    "cold_white"
+    "cold_white",
+    "red",
+    "blue",
+    "green",
+    "magenta",
+    "cyan",
+    "yellow"
 ]
 
 

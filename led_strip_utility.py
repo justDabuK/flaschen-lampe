@@ -4,7 +4,8 @@ NUM_LEDS = 144
 
 
 def set_strip_color(led_strip, led_rainbow_codes, current_mode, poti_value, red, green, blue, led_step):
-    if current_mode in ["white", "warm_white", "cold_white", "color_cycle"]:
+    if current_mode in ["white", "warm_white", "cold_white", "color_cycle", "red", "blue", "green", "magenta", "cyan",
+                        "yellow"]:
         led_strip.fill((int(red), int(green), int(blue)))
         led_strip.show()
     elif current_mode == "rainbow":
