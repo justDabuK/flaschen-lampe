@@ -7,7 +7,7 @@ from poti_utility import poti_warm_white, poti_cold_white
 
 ROUND = "ROUND"
 SQUARE = "SQUARE"
-LCD_MODE = ROUND
+LCD_MODE = SQUARE
 
 square_width = BreakoutColourLCD240x240.WIDTH
 square_height = BreakoutColourLCD240x240.HEIGHT

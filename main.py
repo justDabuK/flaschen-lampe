@@ -12,17 +12,20 @@ from neopixel import Neopixel
 from poti_utility import get_color_codes
 from trackball_utility import set_tb_color, get_current_mode
 
+print("Initialize components")
+
 PINS_BREAKOUT_GARDEN = {"sda": 4, "scl": 5, "baudrate": 100000}
 i2c = PimoroniI2C(**PINS_BREAKOUT_GARDEN)
-
+print("i2c bus is setup")
 # --- Potentiometer ---
 pot = BreakoutPotentiometer(i2c)
 pot.set_brightness(1.0)
 poti_value = 0
+print("poti is setup")
 
 # --- Trackball ---
 trackball = BreakoutTrackball(i2c)
-
+print("trackball is setup")
 # --- LEDs ---
 MAX_BRIGHTNESS = 150
 led_strip = Neopixel(NUM_LEDS, 0, 28, "GRB")
@@ -30,7 +33,7 @@ led_strip.brightness(MAX_BRIGHTNESS)
 
 led_rainbow_codes = get_led_rainbow_codes(led_strip)
 led_step = 0
-
+print("leds are setup")
 # --- Round LCD ---
 display = None
 
@@ -42,6 +45,7 @@ else:
     display = BreakoutRoundLCD(display_buffer)
 
 display.set_backlight(1.0)
+print("display is setup")
 
 t = 0
 
